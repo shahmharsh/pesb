@@ -13,6 +13,7 @@
 		033061D31FFA892300335715 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 033061D21FFA892300335715 /* Assets.xcassets */; };
 		033061D61FFA892300335715 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 033061D41FFA892300335715 /* LaunchScreen.storyboard */; };
 		033061D91FFA892300335715 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 033061D81FFA892300335715 /* main.m */; };
+		1CEA16E9A14C738CA6E2DB59 /* Pods_pesb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3AE14C0A11B5F38C3457C81 /* Pods_pesb.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,9 @@
 		033061D51FFA892300335715 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		033061D71FFA892300335715 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		033061D81FFA892300335715 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2A1186286E5E6EBC4843BEAF /* Pods-pesb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pesb.release.xcconfig"; path = "Pods/Target Support Files/Pods-pesb/Pods-pesb.release.xcconfig"; sourceTree = "<group>"; };
+		D11C2F1402BE0ED9AE792BAF /* Pods-pesb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pesb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pesb/Pods-pesb.debug.xcconfig"; sourceTree = "<group>"; };
+		F3AE14C0A11B5F38C3457C81 /* Pods_pesb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pesb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CEA16E9A14C738CA6E2DB59 /* Pods_pesb.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +49,8 @@
 			children = (
 				033061C81FFA892300335715 /* pesb */,
 				033061C71FFA892300335715 /* Products */,
+				10B20CB86846AE27D212F35D /* Pods */,
+				4E56FC129972558F7DAEB428 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +78,23 @@
 			path = pesb;
 			sourceTree = "<group>";
 		};
+		10B20CB86846AE27D212F35D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D11C2F1402BE0ED9AE792BAF /* Pods-pesb.debug.xcconfig */,
+				2A1186286E5E6EBC4843BEAF /* Pods-pesb.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		4E56FC129972558F7DAEB428 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F3AE14C0A11B5F38C3457C81 /* Pods_pesb.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -78,9 +102,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 033061DC1FFA892300335715 /* Build configuration list for PBXNativeTarget "pesb" */;
 			buildPhases = (
+				9822AC679268E8087857B891 /* [CP] Check Pods Manifest.lock */,
 				033061C21FFA892300335715 /* Sources */,
 				033061C31FFA892300335715 /* Frameworks */,
 				033061C41FFA892300335715 /* Resources */,
+				7F710CFCF852756BDB63A32C /* [CP] Embed Pods Frameworks */,
+				38AE07BC7B94B05567B023E8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -136,6 +163,60 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		38AE07BC7B94B05567B023E8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-pesb/Pods-pesb-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F710CFCF852756BDB63A32C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-pesb/Pods-pesb-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-pesb/Pods-pesb-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9822AC679268E8087857B891 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-pesb-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		033061C21FFA892300335715 /* Sources */ = {
@@ -276,6 +357,7 @@
 		};
 		033061DD1FFA892300335715 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D11C2F1402BE0ED9AE792BAF /* Pods-pesb.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -290,6 +372,7 @@
 		};
 		033061DE1FFA892300335715 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A1186286E5E6EBC4843BEAF /* Pods-pesb.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
