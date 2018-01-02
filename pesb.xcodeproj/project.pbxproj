@@ -13,6 +13,9 @@
 		033061D31FFA892300335715 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 033061D21FFA892300335715 /* Assets.xcassets */; };
 		033061D61FFA892300335715 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 033061D41FFA892300335715 /* LaunchScreen.storyboard */; };
 		033061D91FFA892300335715 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 033061D81FFA892300335715 /* main.m */; };
+		0378F9D51FFB2C6400AD82E4 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0378F9D31FFB2C6400AD82E4 /* TableViewCell.m */; };
+		0378F9D61FFB2C6400AD82E4 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0378F9D41FFB2C6400AD82E4 /* TableViewCell.xib */; };
+		0378F9DA1FFB2EE700AD82E4 /* PESBStock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0378F9D91FFB2EE700AD82E4 /* PESBStock.m */; };
 		1CEA16E9A14C738CA6E2DB59 /* Pods_pesb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3AE14C0A11B5F38C3457C81 /* Pods_pesb.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +30,11 @@
 		033061D51FFA892300335715 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		033061D71FFA892300335715 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		033061D81FFA892300335715 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0378F9D21FFB2C6400AD82E4 /* TableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
+		0378F9D31FFB2C6400AD82E4 /* TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
+		0378F9D41FFB2C6400AD82E4 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		0378F9D81FFB2EE700AD82E4 /* PESBStock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PESBStock.h; sourceTree = "<group>"; };
+		0378F9D91FFB2EE700AD82E4 /* PESBStock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PESBStock.m; sourceTree = "<group>"; };
 		2A1186286E5E6EBC4843BEAF /* Pods-pesb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pesb.release.xcconfig"; path = "Pods/Target Support Files/Pods-pesb/Pods-pesb.release.xcconfig"; sourceTree = "<group>"; };
 		D11C2F1402BE0ED9AE792BAF /* Pods-pesb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pesb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pesb/Pods-pesb.debug.xcconfig"; sourceTree = "<group>"; };
 		F3AE14C0A11B5F38C3457C81 /* Pods_pesb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pesb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +73,7 @@
 		033061C81FFA892300335715 /* pesb */ = {
 			isa = PBXGroup;
 			children = (
+				0378F9D71FFB2EA800AD82E4 /* model */,
 				033061C91FFA892300335715 /* AppDelegate.h */,
 				033061CA1FFA892300335715 /* AppDelegate.m */,
 				033061CC1FFA892300335715 /* ViewController.h */,
@@ -74,8 +83,20 @@
 				033061D41FFA892300335715 /* LaunchScreen.storyboard */,
 				033061D71FFA892300335715 /* Info.plist */,
 				033061D81FFA892300335715 /* main.m */,
+				0378F9D21FFB2C6400AD82E4 /* TableViewCell.h */,
+				0378F9D31FFB2C6400AD82E4 /* TableViewCell.m */,
+				0378F9D41FFB2C6400AD82E4 /* TableViewCell.xib */,
 			);
 			path = pesb;
+			sourceTree = "<group>";
+		};
+		0378F9D71FFB2EA800AD82E4 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				0378F9D81FFB2EE700AD82E4 /* PESBStock.h */,
+				0378F9D91FFB2EE700AD82E4 /* PESBStock.m */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		10B20CB86846AE27D212F35D /* Pods */ = {
@@ -157,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				033061D61FFA892300335715 /* LaunchScreen.storyboard in Resources */,
+				0378F9D61FFB2C6400AD82E4 /* TableViewCell.xib in Resources */,
 				033061D31FFA892300335715 /* Assets.xcassets in Resources */,
 				033061D11FFA892300335715 /* Main.storyboard in Resources */,
 			);
@@ -224,8 +246,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				033061CE1FFA892300335715 /* ViewController.m in Sources */,
+				0378F9D51FFB2C6400AD82E4 /* TableViewCell.m in Sources */,
 				033061D91FFA892300335715 /* main.m in Sources */,
 				033061CB1FFA892300335715 /* AppDelegate.m in Sources */,
+				0378F9DA1FFB2EE700AD82E4 /* PESBStock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

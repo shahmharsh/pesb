@@ -8,60 +8,66 @@
 
 #import "ViewController.h"
 #import <Charts/Charts-Swift.h>
+#import "PESBStock.h"
+#import "TableViewCell.h"
 
 static NSString *kSimpleTableIdentifier = @"SimpleTableItem";
 
 @interface ViewController ()
-@property (weak, nonatomic) IBOutlet LineChartView *chartView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray *data;
+@property (nonatomic, strong) NSArray <PESBStock *> *stocks;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.data = [NSArray arrayWithObjects:@"1", @"2", @"3", @"4", @"5", nil];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kSimpleTableIdentifier];
-    [self initializeChart];
+    [self.tableView registerNib:[UINib nibWithNibName:@"TableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:kSimpleTableIdentifier];
+    [self initializeStocks];
+}
+
+- (void)initializeStocks {
+    PESBStock *stock1 = [[PESBStock alloc] init];
+    stock1.symbol = @"TSLA";
+    stock1.lastPrice = @310.50;
+    NSMutableArray <NSNumber *> *randomStockPrice = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 10; i++) {
+        double val = arc4random_uniform(51) + 300;
+        [randomStockPrice addObject:[NSNumber numberWithDouble:val]];
+    }
+    stock1.dayData = [randomStockPrice copy];
+    
+    PESBStock *stock2 = [[PESBStock alloc] init];
+    stock2.symbol = @"APPL";
+    stock2.lastPrice = @170.21;
+    randomStockPrice = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 10; i++) {
+        double val = arc4random_uniform(21) + 160;
+        [randomStockPrice addObject:[NSNumber numberWithDouble:val]];
+    }
+    stock2.dayData = [randomStockPrice copy];
+    
+    PESBStock *stock3 = [[PESBStock alloc] init];
+    stock3.symbol = @"GOOG";
+    stock3.lastPrice = @1003.62;
+    randomStockPrice = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 10; i++) {
+        double val = arc4random_uniform(51) + 1000;
+        [randomStockPrice addObject:[NSNumber numberWithDouble:val]];
+    }
+    stock3.dayData = [randomStockPrice copy];
+    
+    self.stocks = @[stock1, stock2, stock3];
 }
 
 #pragma mark Table view delegate methods
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSimpleTableIdentifier forIndexPath:indexPath];
-    cell.textLabel.text = [self.data objectAtIndex:indexPath.row];
+    TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSimpleTableIdentifier forIndexPath:indexPath];
+    [cell setStock:[self.stocks objectAtIndex:indexPath.row]];
     return cell;
 }
 
-- (void)initializeChart {
-    LineChartView *chartView = self.chartView;
-    chartView.rightAxis.enabled = NO;
-    chartView.leftAxis.enabled = NO;
-    chartView.xAxis.enabled = NO;
-    chartView.legend.enabled = NO;
-    chartView.userInteractionEnabled = NO;
-    chartView.descriptionText = @"";
-    
-    NSMutableArray <ChartDataEntry*> *values = [[NSMutableArray alloc] init];
-    
-    for (int i = 0; i < 10; i++) {
-        double val = arc4random_uniform(100) + 3;
-        [values addObject:[[ChartDataEntry alloc] initWithX:i y:val icon: [UIImage imageNamed:@"icon"]]];
-    }
-    
-    LineChartDataSet *chartDataSet = nil;
-    chartDataSet = [[LineChartDataSet alloc] initWithValues:values label:@"DataSet 1"];
-    chartDataSet.drawCirclesEnabled = NO;
-    chartDataSet.drawValuesEnabled = NO;
-    
-    NSMutableArray <LineChartDataSet *> *dataSets = [[NSMutableArray alloc] init];
-    [dataSets addObject:chartDataSet];
-    
-    LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
-    chartView.data = data;
-}
-
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.data.count;
+    return self.stocks.count;
 }
 @end
