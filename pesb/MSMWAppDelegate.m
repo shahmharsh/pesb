@@ -1,18 +1,10 @@
-//
-//  AppDelegate.m
-//  pesb
-//
-//  Created by Harsh Shah on 1/1/18.
-//  Copyright © 2018 Harsh Shah. All rights reserved.
-//
+#import "MSMWAppDelegate.h"
 
-#import "AppDelegate.h"
-
-@interface AppDelegate ()
+@interface MSMWAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation MSMWAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

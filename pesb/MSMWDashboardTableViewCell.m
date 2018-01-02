@@ -1,22 +1,14 @@
-//
-//  TableViewCell.m
-//  pesb
-//
-//  Created by Harsh Shah on 1/1/18.
-//  Copyright © 2018 Harsh Shah. All rights reserved.
-//
-
-#import "TableViewCell.h"
+#import "MSMWDashboardTableViewCell.h"
 #import <Charts/Charts-Swift.h>
-#import "PESBStock.h"
+#import "MSMWStock.h"
 
-@interface TableViewCell()
+@interface MSMWDashboardTableViewCell()
 @property (weak, nonatomic) IBOutlet UILabel *stockName;
 @property (weak, nonatomic) IBOutlet LineChartView *chart;
 @property (weak, nonatomic) IBOutlet UILabel *stockData;
 @end
 
-@implementation TableViewCell
+@implementation MSMWDashboardTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -34,7 +26,7 @@
     chartView.backgroundColor = [UIColor clearColor];
 }
 
-- (void)setStock:(PESBStock *)stock {
+- (void)setStock:(MSMWStock *)stock {
     self.stockName.text = stock.symbol;
     self.stockData.text = [stock.lastPrice stringValue];
     [self setChartData:stock.dayData];
