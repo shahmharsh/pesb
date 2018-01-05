@@ -30,7 +30,7 @@
 
 - (void)setStock:(MSMWStock *)stock {
     self.stockName.text = stock.symbol;
-    self.stockData.text = [stock.dayData.lastObject stringValue];
+    self.stockData.text = [NSString stringWithFormat: @"%.2lf", [stock.dayData.lastObject doubleValue]];
     [self updateChartWithStock:stock];
 }
 
@@ -45,12 +45,12 @@
     NSArray <NSNumber *> *chartData = stock.dayData;
     NSMutableArray <ChartDataEntry*> *values = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < stock.dayData.count; i++) {
         [values addObject:[[ChartDataEntry alloc] initWithX:i y:[chartData[i] doubleValue]]];
     }
     
     LineChartDataSet *chartDataSet = nil;
-    chartDataSet = [[LineChartDataSet alloc] initWithValues:values label:@"DataSet 1"];
+    chartDataSet = [[LineChartDataSet alloc] initWithValues:values];
     chartDataSet.drawCirclesEnabled = NO;
     chartDataSet.drawValuesEnabled = NO;
     chartDataSet.colors = @[stockColor];

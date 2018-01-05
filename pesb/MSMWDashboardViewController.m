@@ -22,32 +22,17 @@ static NSString *kMSMWDashboardTableViewCellIdentifier = @"MSMWDashboardTableVie
     MSMWStock *stock1 = [[MSMWStock alloc] init];
     stock1.symbol = @"TSLA";
     stock1.previousDayClose = @310.50;
-    NSMutableArray <NSNumber *> *randomStockPrice = [[NSMutableArray alloc] initWithCapacity:10];
-    for (int i = 0; i < 10; i++) {
-        double val = arc4random_uniform(20) + 300 + 0.01 * arc4random_uniform(100);
-        [randomStockPrice addObject:[NSNumber numberWithDouble:val]];
-    }
-    stock1.dayData = [randomStockPrice copy];
+    stock1.dayData = [self randomizedPriceArrayWithBaseValue:300 range:20];
     
     MSMWStock *stock2 = [[MSMWStock alloc] init];
     stock2.symbol = @"APPL";
     stock2.previousDayClose = @170.21;
-    randomStockPrice = [[NSMutableArray alloc] initWithCapacity:10];
-    for (int i = 0; i < 10; i++) {
-        double val = arc4random_uniform(30) + 150 + 0.01 * arc4random_uniform(100);
-        [randomStockPrice addObject:[NSNumber numberWithDouble:val]];
-    }
-    stock2.dayData = [randomStockPrice copy];
+    stock2.dayData = [self randomizedPriceArrayWithBaseValue:150 range:30];
     
     MSMWStock *stock3 = [[MSMWStock alloc] init];
     stock3.symbol = @"GOOG";
     stock3.previousDayClose = @1003.62;
-    randomStockPrice = [[NSMutableArray alloc] initWithCapacity:10];
-    for (int i = 0; i < 10; i++) {
-        double val = arc4random_uniform(151) + 1000 + 0.01 * arc4random_uniform(100);
-        [randomStockPrice addObject:[NSNumber numberWithDouble:val]];
-    }
-    stock3.dayData = [randomStockPrice copy];
+    stock3.dayData = [self randomizedPriceArrayWithBaseValue:1000 range:150];
     
     self.stocks = @[stock1, stock2, stock3];
 }
@@ -65,5 +50,14 @@ static NSString *kMSMWDashboardTableViewCellIdentifier = @"MSMWDashboardTableVie
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.stocks.count;
+}
+
+-(NSArray <NSNumber *> *)randomizedPriceArrayWithBaseValue:(double)baseValue range:(double)range {
+    NSMutableArray <NSNumber *> *randomStockPrice = [[NSMutableArray alloc] initWithCapacity:20];
+    for (int i = 0; i < 20; i++) {
+        double val = arc4random_uniform(range) + baseValue + 0.01 * arc4random_uniform(100);
+        [randomStockPrice addObject:[NSNumber numberWithDouble:val]];
+    }
+    return [randomStockPrice copy];
 }
 @end
