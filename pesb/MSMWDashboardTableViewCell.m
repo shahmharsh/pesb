@@ -18,7 +18,9 @@
 - (void)setupChart {
     LineChartView *chartView = self.chart;
     chartView.rightAxis.enabled = NO;
-    chartView.leftAxis.enabled = NO;
+    chartView.leftAxis.drawGridLinesEnabled = NO;
+    chartView.leftAxis.drawLabelsEnabled = NO;
+    chartView.leftAxis.drawAxisLineEnabled = NO;
     chartView.xAxis.enabled = NO;
     chartView.legend.enabled = NO;
     chartView.userInteractionEnabled = NO;
@@ -28,11 +30,19 @@
 
 - (void)setStock:(MSMWStock *)stock {
     self.stockName.text = stock.symbol;
-    self.stockData.text = [stock.lastPrice stringValue];
-    [self setChartData:stock.dayData];
+    self.stockData.text = [stock.dayData.lastObject stringValue];
+    [self updateChartWithStock:stock];
 }
 
-- (void)setChartData:(NSArray <NSNumber *> *)chartData {
+- (void)updateChartWithStock:(MSMWStock *)stock {
+    UIColor *stockColor;
+    if ([stock.previousDayClose compare:stock.dayData.lastObject] == NSOrderedAscending) {
+        stockColor = [UIColor greenColor];
+    } else {
+        stockColor = [UIColor redColor];
+    }
+    
+    NSArray <NSNumber *> *chartData = stock.dayData;
     NSMutableArray <ChartDataEntry*> *values = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < 10; i++) {
@@ -43,13 +53,19 @@
     chartDataSet = [[LineChartDataSet alloc] initWithValues:values label:@"DataSet 1"];
     chartDataSet.drawCirclesEnabled = NO;
     chartDataSet.drawValuesEnabled = NO;
-    chartDataSet.colors = @[[UIColor redColor]];
+    chartDataSet.colors = @[stockColor];
     
     NSMutableArray <LineChartDataSet *> *dataSets = [[NSMutableArray alloc] init];
     [dataSets addObject:chartDataSet];
     
     LineChartData *data = [[LineChartData alloc] initWithDataSets:dataSets];
     self.chart.data = data;
+    
+    ChartLimitLine *startLine = [[ChartLimitLine alloc] initWithLimit:[stock.previousDayClose doubleValue]];
+    startLine.lineDashLengths = @[@2.f, @2.f];
+    startLine.lineColor = [UIColor lightGrayColor];
+    [self.chart.leftAxis addLimitLine:startLine];
+    
+    self.stockData.backgroundColor = stockColor;
 }
-
 @end

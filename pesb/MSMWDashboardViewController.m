@@ -21,30 +21,30 @@ static NSString *kMSMWDashboardTableViewCellIdentifier = @"MSMWDashboardTableVie
 - (void)initializeStocks {
     MSMWStock *stock1 = [[MSMWStock alloc] init];
     stock1.symbol = @"TSLA";
-    stock1.lastPrice = @310.50;
-    NSMutableArray <NSNumber *> *randomStockPrice = [[NSMutableArray alloc] init];
+    stock1.previousDayClose = @310.50;
+    NSMutableArray <NSNumber *> *randomStockPrice = [[NSMutableArray alloc] initWithCapacity:10];
     for (int i = 0; i < 10; i++) {
-        double val = arc4random_uniform(51) + 300;
+        double val = arc4random_uniform(20) + 300 + 0.01 * arc4random_uniform(100);
         [randomStockPrice addObject:[NSNumber numberWithDouble:val]];
     }
     stock1.dayData = [randomStockPrice copy];
     
     MSMWStock *stock2 = [[MSMWStock alloc] init];
     stock2.symbol = @"APPL";
-    stock2.lastPrice = @170.21;
-    randomStockPrice = [[NSMutableArray alloc] init];
+    stock2.previousDayClose = @170.21;
+    randomStockPrice = [[NSMutableArray alloc] initWithCapacity:10];
     for (int i = 0; i < 10; i++) {
-        double val = arc4random_uniform(21) + 160;
+        double val = arc4random_uniform(30) + 150 + 0.01 * arc4random_uniform(100);
         [randomStockPrice addObject:[NSNumber numberWithDouble:val]];
     }
     stock2.dayData = [randomStockPrice copy];
     
     MSMWStock *stock3 = [[MSMWStock alloc] init];
     stock3.symbol = @"GOOG";
-    stock3.lastPrice = @1003.62;
-    randomStockPrice = [[NSMutableArray alloc] init];
+    stock3.previousDayClose = @1003.62;
+    randomStockPrice = [[NSMutableArray alloc] initWithCapacity:10];
     for (int i = 0; i < 10; i++) {
-        double val = arc4random_uniform(51) + 1000;
+        double val = arc4random_uniform(151) + 1000 + 0.01 * arc4random_uniform(100);
         [randomStockPrice addObject:[NSNumber numberWithDouble:val]];
     }
     stock3.dayData = [randomStockPrice copy];
@@ -57,6 +57,10 @@ static NSString *kMSMWDashboardTableViewCellIdentifier = @"MSMWDashboardTableVie
     MSMWDashboardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kMSMWDashboardTableViewCellIdentifier forIndexPath:indexPath];
     [cell setStock:[self.stocks objectAtIndex:indexPath.row]];
     return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 64.0f;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
